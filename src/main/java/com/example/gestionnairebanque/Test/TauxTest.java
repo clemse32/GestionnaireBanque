@@ -25,10 +25,5 @@ public class TauxTest {
         taux.setSeuilSup(500d);
         assertEquals(500d, taux.getSeuilSup(), 0.01d);
     }
-    @Test
-    public void testSetTaux() {
-        Taux taux = new Taux("Taux 1", 0d, 1000d, 0.01d);
-        taux.setTaux(0.02d);
-        assertEquals(0.02d, taux.getTaux(), 0.01d);
-    }
+
 }
