@@ -11,4 +11,5 @@ public class TauxTest {
         Taux taux = new Taux("Taux 1", 0d, 1000d, 0.01d);
 
     }
+
 }
