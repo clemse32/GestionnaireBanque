@@ -12,8 +12,8 @@ import java.io.IOException;
 public class GestionnaireBanque extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(GestionnaireBanque.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        FXMLLoader fxmlLoader = new FXMLLoader(GestionnaireBanque.class.getResource("IHM.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 600, 200);
         stage.setTitle("Gestion Bancaire ");
         scene.getRoot().setStyle("-fx-background-color: LIGHTGRAY;");
         stage.setResizable(false);
