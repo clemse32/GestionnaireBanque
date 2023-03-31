@@ -1,6 +1,7 @@
 module com.example.gestionnairebanque {
     requires javafx.controls;
     requires javafx.fxml;
+    requires junit;
 
 
     opens com.example.gestionnairebanque to javafx.fxml;
