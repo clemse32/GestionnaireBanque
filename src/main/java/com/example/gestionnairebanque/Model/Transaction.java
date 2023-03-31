@@ -1,6 +1,7 @@
 package com.example.gestionnairebanque.Model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Transaction implements Serializable {
 
@@ -38,5 +39,10 @@ public class Transaction implements Serializable {
     public void setMontant(double montant) {
         this.montant = montant;
     }
+    public ArrayList<Transaction> getTransactions() {
+        ArrayList<Transaction> transactions = null;
+        return transactions;
+    }
+
 }
 

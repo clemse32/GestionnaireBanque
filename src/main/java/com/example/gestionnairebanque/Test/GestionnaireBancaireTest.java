@@ -2,62 +2,39 @@ package com.example.gestionnairebanque.Test;
 
 import com.example.gestionnairebanque.Model.GestionnaireBancaire;
 import com.example.gestionnairebanque.Model.Taux;
+import com.example.gestionnairebanque.Model.Transaction;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.*;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
 
 public class GestionnaireBancaireTest {
 
-    private GestionnaireBancaire gestionnaireBancaire;
+    private GestionnaireBancaire gestionnaire;
 
     @Before
-    public void setUp() {
-        gestionnaireBancaire = new GestionnaireBancaire();
-    }
-    @Test
-    public void testInitialisationListeTransactions() {
-        assertNotNull(gestionnaireBancaire.getTransactions());
-        assertEquals(0, gestionnaireBancaire.getTransactions().size());
+    public void setup() {
+        gestionnaire = new GestionnaireBancaire();
     }
 
     @Test
-    public void testInitialisationListeTaux() {
-        assertNotNull(gestionnaireBancaire.getTaux());
-        assertEquals(0, gestionnaireBancaire.getTaux().size());
+    public void testEnregistrerTransactionCredit() {
+        Transaction transaction = new Transaction("credit", 'c', 100);
+        gestionnaire.enregistrerTransaction(transaction);
+        assertEquals(100, gestionnaire.getSolde());
     }
 
     @Test
-    public void testInitialisationSolde() {
-        assertEquals(0.0, gestionnaireBancaire.getSolde(), 0.0);
-    }
-
-
-    @Test
-    public void testChargementTauxDepuisFichier() throws IOException {
-        // Création du fichier temporaire avec des données de test
-        Path path = Paths.get(FILE_PATH);
-        Files.createDirectories(path.getParent());
-        Files.write(path, "CREDIT;0.01\nDEBIT;0.02".getBytes());
-
-        gestionnaireBancaire.chargerTauxDepuisFichier(FILE_PATH);
-
-        List<Taux> tauxAttendus = new ArrayList<>();
-        tauxAttendus.add(new Taux(TypeTransaction.CREDIT, 0.01));
-        tauxAttendus.add(new Taux(TypeTransaction.DEBIT, 0.02));
-
-        assertEquals(tauxAttendus, gestionnaireBancaire.getTaux());
-
-        // Suppression du fichier temporaire
-        Files.deleteIfExists(path);
+    public void testEnregistrerTransactionDebit() {
+        Transaction transaction = new Transaction("debit", 'd', 50);
+        gestionnaire.enregistrerTransaction(transaction);
+        assertEquals(-50, gestionnaire.getSolde());
     }
 
 
