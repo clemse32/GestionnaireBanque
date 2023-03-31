@@ -5,4 +5,6 @@ module com.example.gestionnairebanque {
 
     opens com.example.gestionnairebanque to javafx.fxml;
     exports com.example.gestionnairebanque;
+    exports com.example.gestionnairebanque.Controleur;
+    opens com.example.gestionnairebanque.Controleur to javafx.fxml;
 }
